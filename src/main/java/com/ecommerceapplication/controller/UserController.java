@@ -17,12 +17,12 @@ public class UserController {
     private UserService service;
 
 
-    @PostMapping("save")
+    @PostMapping
     public User save(@RequestBody User user){
         return service.saveuser(user);
     }
 
-    @GetMapping("getall")
+    @GetMapping
     public List<User> findall(){
         return service.getallusers();
     }
