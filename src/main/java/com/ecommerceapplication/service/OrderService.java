@@ -6,6 +6,7 @@ import com.ecommerceapplication.entity.Product;
 import com.ecommerceapplication.repository.CartRepository;
 import com.ecommerceapplication.repository.OrderRepository;
 import com.ecommerceapplication.repository.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ public class OrderService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Transactional
     public Order placeOrder( int userId){
         //get cart
         List<Cart> cartitems = cartRepository.findByUserId(userId);
@@ -42,6 +44,7 @@ public class OrderService {
         order.setStatus("PLACED");
         order.setTotalamount(total);
 
+        order = orderRepository.save(order);
         cartRepository.deleteAll(cartitems);
         return order;
     }
