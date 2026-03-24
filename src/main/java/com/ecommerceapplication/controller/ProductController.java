@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("https://ecommerce-frontend-bm3q.onrender.com")
 @RequestMapping("/products")
 public class ProductController {
 
